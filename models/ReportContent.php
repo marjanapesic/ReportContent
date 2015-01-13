@@ -103,7 +103,7 @@ class ReportContent extends HActiveRecordContentAddon
         if ($post->created_by == $user->id)
             return false;
         
-        if ($post->content->getContainer() instanceof Space && ($post->content->getContainer()->isAdmin($userId) || $post->content->getContainer()->isAdmin($post->created_by)))
+        if ($post->content->getContainer() instanceof Space && ($post->content->getContainer()->isAdmin($user->id) || $post->content->getContainer()->isAdmin($post->created_by)))
             return false;
         
         if (ReportContent::model()->exists('object_model = "Post" and object_id = ' . $post->id . ' and created_by = ' . $user->id))
