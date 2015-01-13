@@ -1,0 +1,10 @@
+{
+    "id": "reportcontent",
+    "name": "Report Content Module",
+    "description": "This module allows to report posts.",
+    "keywords": ["report", "content"],
+    "version": "0.9.3",
+    "humhub": {
+        "minVersion": "0.8.0"
+    },
+}
