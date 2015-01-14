@@ -34,5 +34,18 @@ class ReportContentModule extends HWebModule
             'content' => $event->sender->object
         ));
     }
+    
+    /**
+     * On content deletion make sure to delete all its reports
+     *
+     * @param CEvent $event
+     */
+    public static function onContentDelete($event)
+    {
+    
+        foreach (ReportContent::model()->findAllByAttributes(array('object_model' => get_class($event->sender), 'object_id' => $event->sender->id)) as $report) {
+            $report->delete();
+        }
+    }
 }
 ?>

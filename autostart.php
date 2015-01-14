@@ -12,6 +12,7 @@ Yii::app()->moduleManager->register(array(
     // Events to Catch 
     'events' => array(
 		array('class' => 'WallEntryControlsWidget', 'event' => 'onInit', 'callback' => array('ReportContentModule', 'onWallEntryControlsInit')),
+		array('class' => 'HActiveRecordContent', 'event' => 'onBeforeDelete', 'callback' => array('ReportContentModule', 'onContentDelete')),
     ),
 ));
 ?>
