@@ -47,5 +47,17 @@ class ReportContentModule extends HWebModule
             $report->delete();
         }
     }
+    
+    public function disable()
+    {
+        if (parent::disable()) {
+            foreach (Notification::model()->findAllByAttributes(array('source_object_model' => 'ReportContent')) as $notification) {
+                $notification->delete();
+            }
+            ReportContent::model()->deleteAll();
+            return true;
+        }
+        return false;
+    }
 }
 ?>
